@@ -330,7 +330,29 @@ async def play_commnd(
         try:
             details, track_id = await YouTube.track(query)
         except:
-            return await mystic.edit_text(_["play_3"])
+            await mystic.edit_text(_["play_3"])
+            served_chats = await get_active_chats()
+            for x in served_chats:
+                try:
+                    await app.send_message(
+                    x,
+                    f"{config.MUSIC_BOT_NAME} has just restarted herself. Sorry for the issues.\n\nStart playing after 25 - 30 seconds again.",
+                    )
+                    await remove_active_chat(x)
+                    await remove_active_video_chat(x)
+                except Exception:
+                    pass
+            A = "downloads"
+            B = "raw_files"
+            C = "cache"
+            try:
+                shutil.rmtree(A)
+                shutil.rmtree(B)
+                shutil.rmtree(C)
+            except:
+                pass
+            os.system(f"kill -9 {os.getpid()} && bash start")
+
         streamtype = "youtube"
     if str(playmode) == "Direct":
         if not plist_type:
