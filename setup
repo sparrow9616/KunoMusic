@@ -6,7 +6,7 @@ pprint (){
 	cyellow='\033[0;33m'
 	cblue='\033[0;34m'
 	cpurple='\033[0;35m'
-	eval "export color='$cpurple'"
+	eval "export color='$cyellow'"
 	[ ! -z $2 ] && eval "export color=\"\$$2\""
     printf "$color $1"
 }
