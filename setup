@@ -81,6 +81,15 @@ installation(){
 	exit 1
 }
 
+tmux(){
+	pprint "\n\nInstalling tmux... "
+	sudo apt install tmux &&
+	tmux new -s sparrow &&
+	pprint "DONE. installed tmux and created a session with sparrow" "cgreen" && return
+	pprint "FAIL.\n" "cred"
+	exit 1
+}
+
 clear
 pprint "Welcome to AnonXMusic Setup Installer\n\n"
 pprint "If you see any error during Installation Process, Please refer to these files for logs: "
@@ -94,6 +103,7 @@ update
 packages
 node
 installation
+tmux
 pprint "\n\n\n\n\nAnonXMusic Installation Completed !" "cgreen"
 sleep 1
 clear
