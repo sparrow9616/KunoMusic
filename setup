@@ -83,7 +83,7 @@ installation(){
 
 tmux(){
 	pprint "\n\nInstalling tmux... "
-	sudo apt install tmux &&
+	sudo apt install tmux &>/dev/null &&
 	pprint "DONE. installed tmux " "cgreen" && return
 	pprint "FAIL.\n" "cred"
 	exit 1
